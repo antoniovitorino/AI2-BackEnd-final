@@ -8,8 +8,18 @@ let checkToken = (req, res, next) => {
     token = token.slice(7, token.length);
   }
 
-  if (token) {
-    console.log(process.env.JWT_SECRET)
+  // Verificar se a rota é pública (cargos, carousels, equipas, midia, paginas, regras)
+  const isPublicRoute = req.path.includes('/cargos') ||
+    req.path.includes('/carousels') ||
+    req.path.includes('/equipas') ||
+    req.path.includes('/midia') ||
+    req.path.includes('/paginas') ||
+    req.path.includes('/regras');
+
+  // Verificar se a rota é do dashboard
+  const isDashboardRoute = req.path.includes('/dashboard');
+
+  if (token && !isPublicRoute && !isDashboardRoute) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
         return res.json({
@@ -22,11 +32,12 @@ let checkToken = (req, res, next) => {
       }
     });
   } else {
-    return res.json({
-      success: false,
-      message: 'Token indisponível.'
-    });
+    // Rota pública ou do dashboard, não requer autenticação
+    next();
   }
 };
 
+
+
 module.exports = { checkToken: checkToken };
+
