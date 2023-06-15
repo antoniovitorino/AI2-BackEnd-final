@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const User = require('../models/users');
 const sequelize = require('../models/database'); 
 const config = require('../config');
-
 const controllers = {} 
 sequelize.sync()
 
@@ -39,7 +38,6 @@ controllers.register = async (req,res) => {
     });
 }
   
-
 controllers.login = async (req,res) => {
   if (req.body.email && req.body.password) {
       var email = req.body.email;
@@ -106,8 +104,6 @@ controllers.update = async (req, res) => {
     });
   }
 };
-
-
 
 controllers.delete = async (req, res) => {
   const { id } = req.body;
