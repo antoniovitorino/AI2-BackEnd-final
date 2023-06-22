@@ -1,3 +1,18 @@
+/*
+O código importa as dependências multer, path e fs para lidar com o upload de ficheiros e operações do sistema de ficheiros.
+Em seguida, importa os modelos Carousels e Midia, juntamente com a instância sequelize da Base de Dados.
+Em seguida, cria o objeto controllers.
+A função carousels_list busca todos os slides na tabela Carousels e retorna os dados em ordem ascendente de ID.
+A função carousels_create é responsável por criar um novo slide. Recebe o título, descrição e a imagem do slide. A imagem 
+é salva na tabela Midia e o ID da imagem é armazenado no registo do slide.
+A função carousels_detail busca os detalhes de um slide específico com base no ID fornecido.
+A função carousels_update é responsável por atualizar os dados de um slide existente. Recebe o ID do slide, o novo título, 
+a nova descrição e a nova imagem. Se uma nova imagem for fornecida, ela substitui a imagem existente na tabela Midia e atualiza 
+o ID da imagem no registro do slide.
+A função carousels_delete exclui um slide existente com base no ID fornecido.
+O objeto controllers é exportado para ser usado noutros ficheiros.
+*/
+
 const multer = require('multer');
 const path = require('path');
 

@@ -1,3 +1,16 @@
+/*
+O código importa o modelo Cargo e a instância sequelize da Base de Dados.
+Em seguida, cria o objeto controllers.
+A função cargo_list busca todos os cargos na tabela Cargo e retorna os dados.
+A função cargo_create é responsável por criar um novo cargo. Recebe o nome do cargo e cria 
+um novo registro na tabela Cargo.
+A função cargo_detail busca os detalhes de um cargo específico com base no ID fornecido.
+A função cargo_update é responsável por atualizar o nome de um cargo existente. Recebe o ID 
+do cargo e o novo nome do cargo.
+A função cargo_delete exclui um cargo existente com base no ID fornecido.
+O objeto controllers é exportado para ser usado noutros ficheiros.
+*/
+
 var Cargo = require('../models/cargos');
 var sequelize = require('../models/database');
 

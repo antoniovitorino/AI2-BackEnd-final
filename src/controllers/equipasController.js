@@ -1,3 +1,29 @@
+/*
+O código importa as dependências multer, path e fs para lidar com upload de ficheiros e manipulação do sistema de ficheiros.
+O objeto upload é criado usando o multer para configurar o destino dos ficheiros enviados.
+As dependências de modelo e o objeto sequelize são importados dos respectivos ficheiros.
+O objeto controllers vazio é criado para armazenar todas as funções relacionadas ao controlador.
+A função sequelize.sync() é chamada para sincronizar os modelos com a Base de Dados.
+A função controllers.equipa_list é responsável por buscar e retornar todos os membros da equipa. Usa o método Equipa.findAll() 
+para buscar os membros da equipa na Base de Dados. A opção include é usada para incluir o modelo Cargo relacionado. Os membros 
+da equipa são ordenados pelo ID em ordem descendente.
+A função controllers.equipa_create é responsável por criar um novo membro da equipa. Recebe os dados do membro da equipa e o 
+ficheiro de foto enviados na requisição. Um novo registo é criado na tabela Midia para salvar a foto. O conteúdo binário da foto 
+é lido e salvo na base de dados, e o ficheiro da foto é removido do sistema de ficheiros. Em seguida, um novo registo é criado na 
+tabela Equipa com os dados fornecidos e o ID da foto criada.
+A função controllers.equipa_detail é responsável por buscar e retornar um membro específico da equipa com base no ID fornecido na 
+requisição. Usa o método Equipa.findAll() com a opção where para buscar o membro da equipa com o ID correspondente na Base de Dados. 
+A opção include é usada para incluir o modelo Cargo relacionado.
+A função controllers.equipa_update é responsável por atualizar um membro da equipa existente. Recebe o ID do membro da equipa, os 
+dados atualizados e o ficheiro de foto enviados na requisição. O membro da equipa correspondente é buscado no base de dados e os 
+dados são atualizados de acordo com as informações fornecidas. Se uma nova foto for fornecida, um novo registo é criado na tabela 
+Midia para salvar a foto. O conteúdo binário da foto é lido e salvo na base de dados, e o ficheiro da foto é removido do sistema 
+de ficheiros. O ID da foto é atualizado no registo do membro da equipa.
+A função controllers.equipa_delete é responsável por excluir um membro da equipa existente. Recebe o ID do membro da equipa a ser 
+excluído e o exclui da Base de Dados.
+O objeto controllers é exportado para ser usado noutros ficheiros.
+*/
+
 const multer = require('multer');
 const path = require('path');
 
@@ -44,13 +70,13 @@ controllers.equipa_create = async (req, res) => {
           mimetype: foto.mimetype
       });
       
-      fs.unlinkSync(foto.path);  // Remover o arquivo da imagem após salvar os dados na base de dados
+      fs.unlinkSync(foto.path);  
 
       const data = await Equipa.create({
           nome: nome,
           numero_aluno: numero_aluno,
           biografia: biografia,
-          fotoId: midia.id,   // Use o id da midia criada
+          fotoId: midia.id,  
           cargoId: cargo
       });
 
@@ -98,9 +124,9 @@ controllers.equipa_update = async (req, res) => {
               mimetype: foto.mimetype
           });
           
-          fs.unlinkSync(foto.path);  // Remover o arquivo da imagem após salvar os dados na base de dados
+          fs.unlinkSync(foto.path); 
           
-          equipa.fotoId = midia.id;   // Use o id da midia criada
+          equipa.fotoId = midia.id; 
       }
       
       equipa.nome = nome;

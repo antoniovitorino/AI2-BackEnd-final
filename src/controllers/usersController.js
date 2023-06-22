@@ -1,3 +1,29 @@
+/*
+O código importa os módulos jsonwebtoken, bcrypt e User do modelo users, bem como o sequelize, config e 
+define o objeto controllers vazio para armazenar todas as funções relacionadas ao controlador.
+O método sequelize.sync() é chamado para sincronizar os modelos com a Base de Dados.
+A função controllers.list é uma função assíncrona que recupera todos os utilizadores da Base de Dados através 
+do método User.findAll() e retorna os dados em formato JSON.
+A função controllers.register é uma função assíncrona que recebe os dados do utilizador (nome, email e password) 
+por meio do corpo da requisição, cria um novo utilizador na Base de Dados usando o método User.create() e retorna 
+os dados do utilizador registrado em formato JSON.
+A função controllers.login é uma função assíncrona que lida com o processo de autenticação do utilizador. Verifica 
+se o email e a password foram fornecidos na requisição e, em seguida, busca o utilizador correspondente na base de 
+Dados usando o método User.findOne(). Se o utilizador existir, a função verifica se a senha fornecida corresponde 
+à senha armazenada na Base de Dados usando bcrypt.compareSync(). Se a autenticação for bem-sucedida, um token JWT 
+é gerado e retornado em formato JSON.
+A função controllers.update é uma função assíncrona que lida com a atualização dos dados de um utilizador. Recebe o 
+ID do utilizador a ser atualizado e os novos dados (nome e email) no corpo da requisição. Em seguida, utiliza o método
+ User.update() para atualizar os dados na Base de Dados e retorna os dados atualizados do utilizador em formato JSON.
+A função controllers.delete é uma função assíncrona que lida com a exclusão de um utilizador. Recebe o ID do utilizador 
+a ser excluído no corpo da requisição, utiliza o método User.destroy() para remover o utilizador da Base de Dados e 
+retorna uma mensagem de sucesso em formato JSON.
+A função controllers.getUserById é uma função assíncrona que recupera um utilizador pelo seu ID. Recebe o ID do 
+utilizador como parâmetro na rota, utiliza o método User.findOne() para buscar o utilizador correspondente na Base de 
+Dados e retorna os dados do utilizador em formato JSON.
+O objeto controllers é exportado para que possa ser utilizado em outros lugares.
+*/
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/users');
