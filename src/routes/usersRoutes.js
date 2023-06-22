@@ -29,6 +29,6 @@ router.post('/login', usersController.login);
 router.put('/update/:id', middleware.checkToken, usersController.update);
 
 // Rota para excluir um administrador
-router.post('/delete', middleware.checkToken, usersController.delete);
+router.delete('/delete/:id', middleware.checkToken, usersController.delete);
 
 module.exports = router;

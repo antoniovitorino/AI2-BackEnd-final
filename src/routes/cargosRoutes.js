@@ -21,6 +21,6 @@ router.get('/:id', cargosController.cargo_detail);
 router.put('/update/:id', cargosController.cargo_update);
 
 // Rota para excluir um cargo
-router.post('/delete', cargosController.cargo_delete);
+router.delete('/delete/:id', cargosController.cargo_delete);
 
 module.exports = router;

@@ -1,12 +1,12 @@
 /*
-O código importa o modelo Regra do arquivo regras.js e o objeto sequelize do arquivo database.js.
+O código importa o modelo Regra do ficheiro regras.js e o objeto sequelize do ficheiro database.js.
 O objeto controllers vazio é criado para armazenar todas as funções relacionadas ao controlador.
 A função sequelize.sync() é chamada para sincronizar os modelos com a Base de Dados.
 A função controllers.regra_list é uma função assíncrona que recupera todas as regras da Base de Dados 
 usando o método Regra.findAll() e retorna os dados em formato JSON.
 A função controllers.regra_create é uma função assíncrona que lida com a criação duma nova regra. Recebe 
 os dados da regra (regra e descrição) por meio do corpo da requisição, cria uma nova instância do modelo Regra 
-com esses dados e retorna os dados da regra criada em formato JSON.
+com estes dados e retorna os dados da regra criada em formato JSON.
 A função controllers.regra_detail é uma função assíncrona que recupera os detalhes de uma regra específica com 
 base no ID fornecido. Utiliza o método Regra.findAll() com uma cláusula where para buscar a regra correspondente 
 na Base de Dados e retorna os dados em formato JSON.
@@ -14,7 +14,7 @@ A função controllers.regra_update é uma função assíncrona que lida com a a
 o ID da regra a ser atualizada e os novos dados (regra e descrição) no corpo da requisição. Em seguida, utiliza o 
 método Regra.findByPk() para buscar a regra pelo seu ID, atualiza os dados e salva a instância atualizada no 
 Base de Dados. Por fim, retorna os dados da regra atualizada em formato JSON.
-A função controllers.regra_delete é uma função assíncrona que lida com a exclusão de uma regra. Ela recebe o ID da 
+A função controllers.regra_delete é uma função assíncrona que lida com a exclusão de uma regra. Recebe o ID da 
 regra a ser excluída no corpo da requisição, utiliza o método Regra.destroy() para remover a regra da Base de Dados 
 e retorna uma mensagem de sucesso em formato JSON.
 O objeto controllers é exportado para que possa ser utilizado noutros lugares.
@@ -109,14 +109,15 @@ controllers.pagina_update = async (req, res) => {
 };
 
 controllers.pagina_delete = async (req, res) => {
-  const { id } = req.body;
-  
-  const del = await Pagina.destroy({ 
+  const { id } = req.params;
+
+  const del = await Pagina.destroy({
     where: { id: id }
   });
-  
+
   res.json({ success: true, deleted: del, message: 'Página apagada com sucesso' });
 };
+
 
 
 

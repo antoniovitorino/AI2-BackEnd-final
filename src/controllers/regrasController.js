@@ -1,12 +1,12 @@
 /*
-O código importa o modelo Regra do arquivo regras.js e o objeto sequelize do arquivo database.js.
+O código importa o modelo Regra do ficheiro regras.js e o objeto sequelize do ficheiro database.js.
 O objeto controllers vazio é criado para armazenar todas as funções relacionadas ao controlador.
 A função sequelize.sync() é chamada para sincronizar os modelos com a Base de Dados.
 A função controllers.regra_list é uma função assíncrona que recupera todas as regras da Base de Dados 
 usando o método Regra.findAll() e retorna os dados em formato JSON.
 A função controllers.regra_create é uma função assíncrona que lida com a criação de uma nova regra. Recebe 
 os dados da regra (regra e descrição) por meio do corpo da requisição, cria uma nova instância do modelo 
-Regra com esses dados e retorna os dados da regra criada em formato JSON.
+Regra com estes dados e retorna os dados da regra criada em formato JSON.
 A função controllers.regra_detail é uma função assíncrona que recupera os detalhes de uma regra específica 
 com base no ID fornecido. Utiliza o método Regra.findAll() com uma cláusula where para buscar a regra 
 correspondente na Base de Dados e retorna os dados em formato JSON.
@@ -99,13 +99,14 @@ controllers.regra_update = async (req, res) => {
 };
 
 controllers.regra_delete = async (req, res) => {
-  const { id } = req.body;
-  
-  const del = await Regra.destroy({ 
+  const { id } = req.params;
+
+  const del = await Regra.destroy({
     where: { id: id }
   });
-  
+
   res.json({ success: true, deleted: del, message: 'Regra apagada com sucesso' });
 };
+
 
 module.exports = controllers;

@@ -1,7 +1,7 @@
 /*
 O código define um roteador utilizando o módulo express.Router().
 O roteador é utilizado para agrupar as rotas relacionadas aos slides.
-O módulo multer é importado para lidar com o upload de arquivos, como imagens.
+O módulo multer é importado para lidar com o upload de ficheiros, como imagens.
 A configuração do multer é definida com upload.single('foto'), onde 'foto' é o nome do campo do 
 formulário que contém a foto a ser enviada.
 A rota /create utiliza o método post para criar um novo slide, e o middleware upload.single('foto') 
@@ -30,6 +30,6 @@ router.get('/:id', carouselsController.carousels_detail);
 router.put('/update/:id', upload.single('foto'), carouselsController.carousels_update);
 
 // Rota para excluir um slide
-router.post('/delete', carouselsController.carousels_delete);
+router.delete('/delete/:id', carouselsController.carousels_delete);
 
 module.exports = router;

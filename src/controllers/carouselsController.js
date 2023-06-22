@@ -7,8 +7,8 @@ A função carousels_create é responsável por criar um novo slide. Recebe o t�
 é salva na tabela Midia e o ID da imagem é armazenado no registo do slide.
 A função carousels_detail busca os detalhes de um slide específico com base no ID fornecido.
 A função carousels_update é responsável por atualizar os dados de um slide existente. Recebe o ID do slide, o novo título, 
-a nova descrição e a nova imagem. Se uma nova imagem for fornecida, ela substitui a imagem existente na tabela Midia e atualiza 
-o ID da imagem no registro do slide.
+a nova descrição e a nova imagem. Se uma nova imagem for fornecida, substitui a imagem existente na tabela Midia e atualiza 
+o ID da imagem no registo do slide.
 A função carousels_delete exclui um slide existente com base no ID fornecido.
 O objeto controllers é exportado para ser usado noutros ficheiros.
 */
@@ -123,7 +123,7 @@ controllers.carousels_update = async (req, res) => {
 };
 
 controllers.carousels_delete = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   
   const del = await Carousels.destroy({ 
     where: { id: id }

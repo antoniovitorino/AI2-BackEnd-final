@@ -22,6 +22,6 @@ router.get('/:id', regrasController.regra_detail);
 router.put('/update/:id', regrasController.regra_update);
 
 // Rota para excluir uma regra
-router.post('/delete', regrasController.regra_delete);
+router.delete('/delete/:id', regrasController.regra_delete);
 
 module.exports = router;

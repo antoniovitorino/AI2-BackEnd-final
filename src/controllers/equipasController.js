@@ -64,7 +64,7 @@ controllers.equipa_create = async (req, res) => {
           return res.json({ success: false, message: 'Nenhuma imagem enviada' }); 
       }
 
-      // Crie um novo registro na tabela Midia
+      // Crie um novo registo na tabela Midia
       const midia = await Midia.create({
           binario: fs.readFileSync(foto.path),
           mimetype: foto.mimetype
@@ -118,7 +118,7 @@ controllers.equipa_update = async (req, res) => {
       }
     
       if (foto) {
-          // Crie um novo registro na tabela Midia
+          // Crie um novo registo na tabela Midia
           const midia = await Midia.create({
               binario: fs.readFileSync(foto.path),
               mimetype: foto.mimetype
@@ -144,7 +144,7 @@ controllers.equipa_update = async (req, res) => {
 };
 
 controllers.equipa_delete = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   
   const del = await Equipa.destroy({ 
     where: { id: id }

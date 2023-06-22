@@ -1,5 +1,5 @@
 /*
-O modelo Midia é importado a partir do arquivo midia.js para ser utilizado como referência na tabela de carousels.
+O modelo Midia é importado a partir do ficheiro midia.js para ser utilizado como referência na tabela de carousels.
 A variável Carousels é definida como um modelo do Sequelize, representando a tabela "carousel" na Base de Dados.
 As colunas da tabela são definidas como propriedades do objeto Carousels. Temos as colunas id, titulo, descricao e fotoId.
 A propriedade id é definida como um inteiro com a chave primária e auto incremento.

@@ -14,8 +14,7 @@ O modelo Pagina é exportado para que possa ser utilizado noutros lugares.
 var Sequelize = require('sequelize'); 
 var sequelize = require('./database'); 
 
-var Pagina = sequelize.define('paginas', { 
-    
+var Pagina = sequelize.define('paginas', {   
     id: {
         type: Sequelize.INTEGER, 
         primaryKey: true,        

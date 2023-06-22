@@ -1,8 +1,8 @@
 /*
-O código importa o modelo Midia do arquivo midia.js e o objeto sequelize do arquivo database.js.
+O código importa o modelo Midia do ficheiro midia.js e o objeto sequelize do ficheiro database.js.
 O objeto controllers vazio é criado para armazenar todas as funções relacionadas ao controlador.
 A função sequelize.sync() é chamada para sincronizar os modelos com a Base de Dados.
-A função controllers.midia é responsável por recuperar e enviar um arquivo de mídia com base no ID 
+A função controllers.midia é responsável por recuperar e enviar um ficheiro de mídia com base no ID 
 fornecido nos parâmetros da requisição. Utiliza o método Midia.findByPk() para buscar a mídia pelo 
 seu ID na Base de Dados. Se a mídia não for encontrada, a função responde com o status 404. Caso 
 contrário, define o cabeçalho Content-Type com o tipo de mídia correspondente e envia o conteúdo 

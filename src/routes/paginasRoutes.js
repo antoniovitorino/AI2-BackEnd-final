@@ -22,6 +22,6 @@ router.get('/:id', paginasController.pagina_detail);
 router.put('/update/:id', paginasController.pagina_update);
 
 // Rota para excluir uma página
-router.post('/delete', paginasController.pagina_delete);
+router.delete('/delete/:id', paginasController.pagina_delete);
 
 module.exports = router;

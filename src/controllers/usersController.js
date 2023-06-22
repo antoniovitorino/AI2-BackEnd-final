@@ -9,8 +9,8 @@ por meio do corpo da requisição, cria um novo utilizador na Base de Dados usan
 os dados do utilizador registrado em formato JSON.
 A função controllers.login é uma função assíncrona que lida com o processo de autenticação do utilizador. Verifica 
 se o email e a password foram fornecidos na requisição e, em seguida, busca o utilizador correspondente na base de 
-Dados usando o método User.findOne(). Se o utilizador existir, a função verifica se a senha fornecida corresponde 
-à senha armazenada na Base de Dados usando bcrypt.compareSync(). Se a autenticação for bem-sucedida, um token JWT 
+Dados usando o método User.findOne(). Se o utilizador existir, a função verifica se a password fornecida corresponde 
+à password armazenada na Base de Dados usando bcrypt.compareSync(). Se a autenticação for bem-sucedida, um token JWT 
 é gerado e retornado em formato JSON.
 A função controllers.update é uma função assíncrona que lida com a atualização dos dados de um utilizador. Recebe o 
 ID do utilizador a ser atualizado e os novos dados (nome e email) no corpo da requisição. Em seguida, utiliza o método
@@ -132,7 +132,7 @@ controllers.update = async (req, res) => {
 };
 
 controllers.delete = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const data = await User.destroy({
     where: { id: id }
   })
@@ -149,6 +149,7 @@ controllers.delete = async (req, res) => {
     data: data
   });
 }
+
 
 controllers.getUserById = async (req, res) => {
   const { id } = req.params;

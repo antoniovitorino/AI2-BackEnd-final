@@ -9,7 +9,7 @@ A propriedade password é definida como uma string não nula.
 O objeto de configuração do modelo é definido com { timestamps: false }, o que desabilita o uso de campos de timestamps 
 automáticos (como createdAt e updatedAt) no modelo.
 O método beforeCreate é utilizado para executar uma função antes de criar um novo utilizador na Base de Dados.
-Dentro da função, a senha do utilizador é encriptada usando a função bcrypt.hash com um fator de custo de 10 
+Dentro da função, a password do utilizador é encriptada usando a função bcrypt.hash com um fator de custo de 10 
 (valor maior significa mais segurança, mas também mais tempo de processamento).
 O hash resultante é atribuído à propriedade password do utilizador.
 Se ocorrer algum erro durante o processo de encriptação, uma exceção é lançada.
@@ -20,7 +20,8 @@ const Sequelize = require('sequelize');
 const sequelize = require('./database');
 const bcrypt = require('bcrypt'); //encripta a password a guardar na BD
 
-var User = sequelize.define('users', { id: {
+var User = sequelize.define('users', { 
+    id: {
         type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true,
     },
         name: Sequelize.STRING, 

@@ -29,6 +29,6 @@ router.get('/:id', equipaController.equipa_detail);
 router.put('/update/:id', upload.single('foto'), equipaController.equipa_update);
 
 // Rota para excluir uma equipa
-router.post('/delete', equipaController.equipa_delete);
+router.delete('/delete/:id', equipaController.equipa_delete);
 
 module.exports = router;
